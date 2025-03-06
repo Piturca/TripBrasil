@@ -19,22 +19,28 @@
 			        echo "Error: " . $conn->error;
 			    }
 			    $conn->close();
+				}
 			}
 $id = (isset($_POST["id"])) ? $_POST["id"] : '';
-$Gasto = (isset($_POST["Gasto"])) ? $_POST["Gasto"] : '';
-$Monto = (isset($_POST["Monto"])) ? $_POST["Monto"] : '';
+$gasto = (isset($_POST["gasto"])) ? $_POST["gasto"] : '';
+$monto = (isset($_POST["monto"])) ? $_POST["monto"] : '';
 
 			switch ($accion) {
 				case 'agregar':
-				    $sql = "INSERT INTO inma_trip VALUES ('', '$gasto', '$monto')";
+				    $sql = "INSERT INTO brasil VALUES ('', '$gasto', '$monto')";
 				    if (ejecutar_query($sql) == 'ok') {
 	?>
 				    	<script>
                             Swal.fire({
                                 icon: 'success',
-                                title: 'Listo !!!',
-                                text: '<?php echo $nombre ?> ¡Gasto introducido!'
+                                title: '¡¡¡Listo !!!',
+                                text: '¡Gasto agregado!'
                             }).then(function() {
                                 window.location = "index.php";
                             });
                         </script>
+	<?php
+				    }
+					break;
+				}
+	?>
