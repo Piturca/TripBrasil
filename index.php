@@ -13,22 +13,14 @@
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <style>
-        .wrap{
-            white-space: nowrap;
-        }
-        .botones{
-            width: 100%;
-        }
-    </style>
 
 </head>
 	<link rel="shortcut icon" href="C:\xampp\htdocs\TripBrasil\TripBrasil\brasil.png" type="image/png">
 <body>
-	<nav class="navbar navbar-expand-lg bg-success">
+	<nav class="navbar navbar-expand-lg bg-#009793">
      	<div class="container">
-     		<a class="navbar-brand text-white" href="#">
-                Brasil Trip <i rel="shortcut icon" href="C:\xampp\htdocs\TripBrasil\TripBrasil\brasil.png" type="image/png"></i>
+     		<a class="navbar-brand text-white text-center w-100" href="#">
+                Brasil Trip <i rel="shortcut icon" href="C:\xampp\htdocs\TripBrasil\brasil.png" type="image/png"></i>
             </a>
         </div>
     </nav>
@@ -72,10 +64,11 @@
                         <tr>
                             <td class="wrap"><?php echo $counter; ?></td>
                             <td class="wrap"><?php echo $row['gasto']; ?></td>
-                            <td class="wrap"><?php echo $row['monto']-($row['monto']*0.21); ?></td>
-                            <td class="wrap"><?php echo $row['monto']*0.21; ?></td>
-                            <td class="wrap"><?php echo $row['monto']; ?></td>
+                            <td class="wrap"><?php echo number_format($row['monto']-($row['monto']*0.21), 2, ',', '.'). ' €'; ?></td>
+                            <td class="wrap"><?php echo number_format($row['monto']*0.21, 2, ',', '.'). ' €'; ?></td>
+                            <td class="wrap"><?php echo number_format($row['monto'], 2, ',', '.'). ' €'; ?></td>
                         </tr>
+
     <?php
                 }
     ?>
