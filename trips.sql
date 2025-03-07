@@ -11,26 +11,32 @@
  Target Server Version : 100432 (10.4.32-MariaDB)
  File Encoding         : 65001
 
- Date: 03/03/2025 20:21:57
+ Date: 07/03/2025 20:12:22
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------
--- Table structure for inma_brasil
+-- Table structure for brasil
 -- ----------------------------
-DROP TABLE IF EXISTS `inma_brasil`;
-CREATE TABLE `inma_brasil`  (
+DROP TABLE IF EXISTS `brasil`;
+CREATE TABLE `brasil`  (
   `ID` int NOT NULL AUTO_INCREMENT,
-  `Gasto` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `Concepto` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `Tipo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `gasto` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `monto` int NOT NULL,
   PRIMARY KEY (`ID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- Records of inma_brasil
+-- Records of brasil
 -- ----------------------------
+INSERT INTO `brasil` VALUES (1, 'xxxx', 100);
+INSERT INTO `brasil` VALUES (2, 'montp', 100);
+INSERT INTO `brasil` VALUES (3, 'montp', 100);
+INSERT INTO `brasil` VALUES (4, 'museo', 150);
+INSERT INTO `brasil` VALUES (5, ' bollos', 5);
+INSERT INTO `brasil` VALUES (6, 'bicicleta', 250);
+INSERT INTO `brasil` VALUES (7, 'paseo a caballo', 30);
 
 SET FOREIGN_KEY_CHECKS = 1;
