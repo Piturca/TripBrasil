@@ -13,14 +13,16 @@
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <link rel="icon" type="image/png" href="./brasil_favicon.png">
+
 
 </head>
 	<link rel="shortcut icon" href="C:\xampp\htdocs\TripBrasil\TripBrasil\brasil.png" type="image/png">
 <body>
-	<nav class="navbar navbar-expand-lg bg-#009793">
+	<nav class="navbar navbar-expand-lg bg-success">
      	<div class="container">
-     		<a class="navbar-brand text-white text-center w-100" href="#">
-                Brasil Trip <i rel="shortcut icon" href="C:\xampp\htdocs\TripBrasil\brasil.png" type="image/png"></i>
+     		<a class="navbar-brand text-white text-center w-100" href="#" style="display: flex; justify-content: center; align-items: center;">
+                <h1>Brasil Trip</h1> <img style="height: 60px;" src="./brasil.png" alt="">
             </a>
         </div>
     </nav>
@@ -41,6 +43,11 @@
 
         $query = "SELECT * FROM brasil";
         $result = $conn->query($query);
+
+        $queryTotal = "SELECT SUM(monto) AS total FROM brasil";
+        $resultTotal = $conn->query($queryTotal);
+        $resultTotal = $resultTotal->fetch_assoc();
+        $resultTotal = $resultTotal['total'];
 
         if ($result->num_rows > 0) {
     ?>
@@ -72,6 +79,10 @@
     <?php
                 }
     ?>
+                        <tr>
+                            <td colspan="4" class="wrap" style="text-align: right;"><b>Total</b></td>
+                            <td class="wrap"><?php echo number_format($resultTotal, 2, ',', '.'). ' €'; ?></td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
