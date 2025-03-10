@@ -1,0 +1,28 @@
+:root {
+	--brasil-color: #009739
+}
+.bg-pais {
+	background-color: var(--brasil-color);
+}
+thead th {
+	background-color: var(--brasil-color) !important;
+	color: white !important;
+}
+.wrap {
+	white-space: nowrap;
+}
+.alert {
+	margin-bottom: 0px;
+	height: 30px;
+	line-height: 30px;
+	padding: 0px;
+}
+@media screen and (max-width: 1200px){
+	table {
+		border: none;
+		clip: rect( 0 0 0 0);
+		height: 1px;
+		margin: -1px;
+		
+	}
+}

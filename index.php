@@ -30,26 +30,40 @@
 	<div class="container mt-3 col-md-3">
         <h2 class="text-center">Registro de Gastos</h2>
         <form action="procesar.php" method="POST">
-            <label class="form-label" for="nombre">gasto:</label>
+            <label class="form-label" for="nombre">Gasto:</label>
             <input type="hidden" id="accion" name="accion" value="agregar">
-            <input type="text" class="form-control" id="gasto" name="gasto" placeholder="gasto" required><br>
-            <label for="monto">monto:</label>
-            <input type="text" class="form-control" id="monto" name="monto" placeholder="monto" required><br>
+            <input type="text" class="form-control" id="gasto" name="gasto" placeholder="Introduce el gasto" required><br>
+            <label for="monto">Monto:</label>
+            <input type="text" class="form-control" id="monto" name="monto" placeholder="Introduce el monto" required><br>
             <button type="submit" class="btn btn-success">Guardar</button>
         </form>
     </div>
 
 <?php
 
-        $query = "SELECT * FROM brasil";
-        $result = $conn->query($query);
+        $query = "SELECT id, gasto, monto FROM brasil";
+        try {
+            $result = $conn->query($query);
+        } catch (Exception $e) {
+            echo "Error en la consulta";
+        }
 
-        $queryTotal = "SELECT SUM(monto) AS total FROM brasil";
-        $resultTotal = $conn->query($queryTotal);
-        $resultTotal = $resultTotal->fetch_assoc();
-        $resultTotal = $resultTotal['total'];
+
+        $resultTotal = $conn->query("SELECT SUM(monto) AS total FROM brasil")->fetch_assoc()['total'];
 
         if ($result->num_rows > 0) {
+           switch (true) {
+                case $resultTota > 800:
+                    $alert = 'danger';
+                    // code...
+                    break;
+                case $resultTota > 500;
+                    $alert = 'warning';
+
+                default:
+                    $alert = 'success'; // code...
+                    break;
+        }
     ?>
             <div class="container mt-3 table-responsive">
                 <table class="table table-hover text-center">
@@ -71,8 +85,8 @@
                         <tr>
                             <td class="wrap"><?php echo $counter; ?></td>
                             <td class="wrap"><?php echo $row['gasto']; ?></td>
-                            <td class="wrap"><?php echo number_format($row['monto']-($row['monto']*0.21), 2, ',', '.'). ' €'; ?></td>
-                            <td class="wrap"><?php echo number_format($row['monto']*0.21, 2, ',', '.'). ' €'; ?></td>
+                            <td class="wrap"><?php echo number_format($row['monto']-($row['base']*0.21), 2, ',', '.'). ' €'; ?></td>
+                            <td class="wrap"><?php echo number_format($row['IVA']*0.21, 2, ',', '.'). ' €'; ?></td>
                             <td class="wrap"><?php echo number_format($row['monto'], 2, ',', '.'). ' €'; ?></td>
                         </tr>
 
